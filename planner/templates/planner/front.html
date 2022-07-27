@@ -1,0 +1,23 @@
+{% extends 'planner/main.html' %}
+{% block content %}
+    <div class="ml-5 mt-5">
+        <h2 class="ml-4 mt-2">Tasks</h2>
+        {% for task in task_list %}
+            <article class="media content-section border-bottom mt-4 ml-5 mt-1">
+                <div class="media-body m-1">
+                    <p class="article-title"><input class="m-2" type="radio"><a href="{% url 'update' task.id %}">{{ task.title }}</a></a></p>
+                    <small class="text-muted">
+                        {{ task.priority }} | Due: {{ task.date_due }} | <a href="{% url 'task-delete' task.id %}"> Mark as done</a>
+                    </small>  
+                </div>
+            </article>
+        {% empty %}
+            <div class="ml-5">
+                <h2>No tasks to display</h2>
+                <p>
+                    <a href="{% url 'new-task' %}">+ New Task</a>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'planner/main.html' %}
+{% block content %}
+    <div class="ml-5 mt-3">
+        <h2 class="border-bottom mt-5 ml-4">Task '{{ task.title }}'' Completed!</h2>
+        <div class="content-section ml-5">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <p>
+                        Are you sure to mark this task as completed?
+                    </p>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" href="{% url 'front' %}">Cancel</button>
+                    <button class="btn btn-info" type="submit">Complete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

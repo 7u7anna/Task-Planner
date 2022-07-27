@@ -1,0 +1,23 @@
+{% extends 'planner/main.html' %}
+{% block content %}
+    <div class="ml-5">
+        <h2 class="border-bottom ml-4 mb-4 mt-5">Daily Habits</h2>
+        {% for habit in habits_list %}
+            <article class="media content-section border-bottom ml-5 mt-1">
+                <div class="media-body">
+                    <p class="">{{ habit.habit }}</p>
+                    <small class="text-muted">
+                        <a href="{% url 'delete-habit' habit.id %}">Delete</a>
+                    </small>
+                </div>
+            </article>
+            {% empty %}
+            <div class="ml-5">
+                <h2>You have not added any daily habits yet</h2>
+                <p>
+                    <a href="{% url 'new-habit' %}">+ Add Habit</a>
+                </p>
+            </div>
+    </div>
+    {% endfor %}
+{% endblock content %}

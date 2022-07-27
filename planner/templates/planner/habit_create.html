@@ -1,0 +1,23 @@
+{% extends 'planner/main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="habit-container">
+        <div class="create-habit">
+            <h2 class="border-bottom mt-5 ml-4">Create New Habit</h2>
+            <p class="ml-4">
+                Here you can create new habits!
+            </p>
+            <div class="content-section ml-5">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-info" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

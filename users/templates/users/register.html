@@ -1,0 +1,21 @@
+{% extends 'planner/main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="register">
+        <h2 class="border-bottom ml-4">Create Account</h2>
+        <div class="content-section ml-5">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-info" type="submit">Create Account</button>
+                </div>
+            </form>
+            <small class="text-muted m-1">
+                Have an account? <a href="{% url 'login' %}">Log In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
